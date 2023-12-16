@@ -1,0 +1,7 @@
+# Attempt to embed rust into golang
+
+[quote,Rita Mae Brown,Sudden Death (1983)]
+____
+Insanity is doing the same thing over and over again,
+but expecting different results.
+____
