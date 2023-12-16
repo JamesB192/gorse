@@ -4,14 +4,14 @@ use regex::Regex;
 // use crate::h_ntp_fp;
 
 pub fn hextolfp(instr: &str, lfp: &mut u64) -> bool {
-    let re = Regex::new(r"(?m)^ *([[:xdigit:]]{8})\.?([[:xdigit:]]{8})[ \t\n]*$").unwrap();
+    let re = Regex::new(r"(?m)^ *(0[xX]){0,1}([[:xdigit:]]{8})\.?([[:xdigit:]]{8})[ \t\n]*$").unwrap();
     let Some(caps) = re.captures(instr) else { return false; };
 
-    let dec_i = u32::from_str_radix(&caps[1], 16).unwrap();
-    let dec_f = u32::from_str_radix(&caps[2], 16).unwrap();
+    let dec_i = u32::from_str_radix(&caps[2], 16).unwrap();
+    let dec_f = u32::from_str_radix(&caps[3], 16).unwrap();
 
-    *lfp = u64::from(dec_i) << 32 | u64::from(dec_f);
-    // *lfp = super::h_ntp_fp::lfpinit_u(dec_i, dec_f);
+    // *lfp = u64::from(dec_i) << 32 | u64::from(dec_f);
+    *lfp = lfpinit_u(dec_i, dec_f);
     return true;
 }
 
