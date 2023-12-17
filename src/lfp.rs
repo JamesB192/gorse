@@ -1,7 +1,14 @@
 // hextolfp - convert an ascii hex string to an l_fp number
 
+use std::{ffi::{c_char, CStr}, str};
 use regex::Regex;
-// use crate::h_ntp_fp;
+
+#[no_mangle]
+pub extern "C" fn chextolfp(c_buf: *const c_char, lfp: &mut u64) -> bool {
+    let c_str: &CStr = unsafe { CStr::from_ptr(c_buf) };
+    let from: &str = c_str.to_str().unwrap();
+	return hextolfp(from, lfp);
+}
 
 pub fn hextolfp(instr: &str, lfp: &mut u64) -> bool {
     let re = Regex::new(r"(?m)^ *(0[xX]){0,1}([[:xdigit:]]{8})\.?([[:xdigit:]]{8})[ \t\n]*$").unwrap();
