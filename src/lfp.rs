@@ -11,7 +11,7 @@ pub extern "C" fn chextolfp(c_buf: *const c_char, lfp: &mut u64) -> bool {
 }
 
 pub fn hextolfp(instr: &str, lfp: &mut u64) -> bool {
-    let re = Regex::new(r"(?m)^ *(0[xX]){0,1}([[:xdigit:]]{8})\.?([[:xdigit:]]{8})[ \t\n]*$").unwrap();
+    let re = Regex::new(r"(?m)^[ \t\n]*(0[xX]){0,1}([[:xdigit:]]{8})\.?([[:xdigit:]]{8})[ \t\n]*$").unwrap();
     let Some(caps) = re.captures(instr) else { return false; };
 
     let dec_i = u32::from_str_radix(&caps[2], 16).unwrap();

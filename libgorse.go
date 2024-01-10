@@ -1,9 +1,9 @@
 package main
 
 /*
-#cgo CFLAGS: -I..
-#cgo LDFLAGS: -L../target/debug -l gorse -v
-// -Wl,-rpath=../target/debug
+#cgo CFLAGS: -I.
+#cgo LDFLAGS: -L. -l gorse -v
+// -Wl,-rpath=.
 #include "gorse.h"
 */
 import "C"
@@ -14,7 +14,7 @@ import "unsafe"
 func HexToLFP(in_string string) (bool, uint64) {
 	mid_string := C.CString(in_string)
 	defer C.free(unsafe.Pointer(mid_string))
-	mid_fixed_point := C.ulonglong(0)
+	mid_fixed_point := C.ulong(0)
 	success := C.chextolfp(mid_string, &mid_fixed_point)
 	return bool(success), uint64(mid_fixed_point)
 }
