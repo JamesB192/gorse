@@ -2,7 +2,8 @@
 
 cargo test
 cbindgen --lang C --output gorse.h
-cp -v target/debug/deps/libgorse.so .
+cp -v target/debug/deps/libgorse.* .
 ./gorse.py -v
-go test
-go build
+LD_LIBRARY_PATH=. go test
+LD_LIBRARY_PATH=. go build
+LD_LIBRARY_PATH=. ./gorse
