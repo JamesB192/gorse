@@ -1,6 +1,10 @@
 /target
 /Cargo.lock
-*.so
-*.dylib
 *.dll
+*.dylib
+*.exe
+*.h
+*.o
+*.rlib
+*.so
 gorse
