@@ -2,7 +2,7 @@ package main
 
 /*
 #cgo CFLAGS: -I.
-#cgo LDFLAGS: -L. -l gorse -v
+#cgo LDFLAGS: -L. -l gorse
 // -Wl,-rpath=.
 #include "gorse.h"
 */
