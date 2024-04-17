@@ -26,10 +26,6 @@ pub fn lfpinit_u(sec: u32, frac: u32) -> u64 {
     return u64::from(sec) << 32 | u64::from(frac);
 }
 
-pub fn lfpinit(sec: i32, frac: u32) -> u64 {
-    return u64::from(sec as u32) << 32 | u64::from(frac);
-}
-
 #[cfg(test)]
 mod tests { // Interesting no tests without the period...
     use super::*;
@@ -38,6 +34,10 @@ mod tests { // Interesting no tests without the period...
     const HALF: u32 = 2147483648;               // (1 << 31)
     const QUARTER: u32 = 1073741824;            // (1 << 30)
     
+    pub fn lfpinit(sec: i32, frac: u32) -> u64 {
+        return u64::from(sec as u32) << 32 | u64::from(frac);
+    }
+
     #[test]
     fn illegal_char() {
         let str = "10000000.0000h000"; // Illegal character h.
