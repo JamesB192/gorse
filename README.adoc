@@ -6,3 +6,17 @@ Insanity is doing the same thing over and over again,
 but expecting different results.
 ____
 
+## Contents
+
+README.adoc::
+    This file
+
+hex2lfp::
+    The first successful foray into using a Rustlang dylib
+    from Golang and Python. It takes a formatted string and
+    yeilds a bool and an integer derived from the string.
+
+evp::
+    The next foray into using Rust from other languages.
+    Time to see how well symmetric ciphers work in other
+    languages when written in Rust.
